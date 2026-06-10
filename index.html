@@ -23,7 +23,7 @@ post:(t,d)=>fetch(API+'/'+t,{method:'POST',headers:{...H,'Prefer':'return=repres
 patch:(t,q,d)=>fetch(API+'/'+t+'?'+q,{method:'PATCH',headers:{...H,'Prefer':'return=representation'},body:JSON.stringify(d)}).then(r=>r.ok?r.json():null).catch(()=>null),
 upsert:(t,d,c)=>fetch(API+'/'+t+'?on_conflict='+c,{method:'POST',headers:{...H,'Prefer':'return=representation,resolution=merge-duplicates'},body:JSON.stringify(d)}).then(r=>r.ok?r.json():null).catch(()=>null)};
 const fD=d=>new Date(d).toLocaleString('es-CO',{timeZone:'America/Bogota',weekday:'long',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'});
-const fM=n=>'\$'+n.toLocaleString('es-CO');
+const fM=n=>'$'+n.toLocaleString('es-CO');
 const FRASES=['5 luquitas al fuego! El que parpadea pierde','Esa es la del billete o la del corazon?','Le esta jugando al empate? Que valiente!','Usted si cree en milagros!','A ese marcador le faltan huevos pero bueno','Se nota que vio los partidos... por YouTube','Apostador de corazon, no de cabeza','Con esa apuesta hasta el tecnico se rie'];
 const VENDEP=['VENDEPAAAATRIA! Aposto contra Colombia? Que verguenza!','GENTE DE POCA FE! Como apuesta contra la Tricolor?','TRAICION A LA PATRIA! La Seleccion no lo perdona','SE LE OLVIDO DE DONDE ES? Colombia papa, con fe!','Apostando contra los nuestros? INADMISIBLE'];
 const getEmoji=(a,b)=>{const t=a+b;if(t===0)return '\u{1F971}';if(t>=6)return '\u{1F921}';if(Math.abs(a-b)>=3)return '\u{1F525}';if(a===b&&t>0)return '\u{1F914}';return '\u{1F60E}'};
